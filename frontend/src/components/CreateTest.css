@@ -1,0 +1,55 @@
+.question-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.question {
+    width: 86%;
+    margin: 10px 0;
+    padding: 4px;
+    word-wrap: break-word;
+    text-wrap: pretty;
+}
+
+.answer {
+    width: 86%;
+    margin: 5px 0;
+    padding: 2px;
+    word-wrap: break-word;
+    text-wrap: pretty;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.remove-question-button {
+    margin-right: 36px;
+    padding: 10px 10px;
+}
+
+.submit-test-button {
+    width: calc(100% - 22px);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.submit-test-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#your-questions-label {
+    margin-top: 50px;
+}
+
+#no-questions {
+    margin-left: 22px;
+}
