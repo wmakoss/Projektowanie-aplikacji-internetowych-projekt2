@@ -1,0 +1,35 @@
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #fbfbeb;
+}
+
+h1 {
+    margin: 15px;
+}
+
+h2 {
+    margin: 15px;
+    font-size: 28px;
+}
+
+h3 {
+    margin: 15px;
+}
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #ffffff;
+    border-style: groove;
+}
+
+button:hover {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2d3239;
+    color: #ffffff;
+}
+
+input {
+    font-family: 'Courier New', Courier, monospace;
+}

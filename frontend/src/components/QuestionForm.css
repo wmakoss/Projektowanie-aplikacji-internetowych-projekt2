@@ -1,0 +1,52 @@
+.question-form {
+    margin: 20px;
+}
+
+.question-input {
+    display: block;
+    width: calc(100% - 22px);
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.answer-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+.answer-input {
+    display: block;
+    width: calc(100% - 220px);
+    margin-bottom: 5px;
+    padding: 8px;
+}
+
+.correct-checkbox {
+    margin-left: 12px;
+    margin-right: 10px;
+}
+
+.correct-checkbox:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.remove-answer-button {
+    margin-left: 12px;
+    margin-right: 10px;
+    padding: 10px 10px;
+}
+
+.add-button,
+.submit-button {
+    width: calc(50% - 22px);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
