@@ -30,6 +30,18 @@ db.test2 = sequelize.define("test2", {
     }
 });
 
+db.quiz = sequelize.define("quiz", {
+    name: {
+        type: Sequelize.STRING
+    },
+    publicID: {
+        type: Sequelize.STRING
+    },
+    privateID: {
+        type: Sequelize.STRING
+    }
+});
+
 db.sequelize.sync({force: false})
 // false - nienadpisuje struktury bazy i danych
 .then(() => {
