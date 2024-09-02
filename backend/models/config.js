@@ -31,6 +31,9 @@ db.test2 = sequelize.define("test2", {
 });
 
 db.quiz = sequelize.define("quiz", {
+    UUID: {
+        type: Sequelize.STRING
+    },
     name: {
         type: Sequelize.STRING
     },
@@ -39,6 +42,33 @@ db.quiz = sequelize.define("quiz", {
     },
     privateID: {
         type: Sequelize.STRING
+    }
+});
+
+db.question = sequelize.define("question", {
+    UUID: {
+        type: Sequelize.STRING
+    },
+    quizID: {
+        type: Sequelize.STRING
+    },
+    question: {
+        type: Sequelize.STRING
+    },
+    answer1: {
+        type: Sequelize.STRING
+    },
+    answer2: {
+        type: Sequelize.STRING
+    },
+    answer3: {
+        type: Sequelize.STRING
+    },
+    answer4: {
+        type: Sequelize.STRING
+    },
+    correct: {
+        type: Sequelize.INTEGER
     }
 });
 

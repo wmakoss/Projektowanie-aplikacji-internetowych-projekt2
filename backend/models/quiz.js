@@ -6,27 +6,15 @@ var db = config.db;
 
 var Quiz = db.quiz;
 
-// async function getAll() {
-//     let data = [];
-
-//     try {
-//         data = await Test2.findAll();
-//     }
-//     catch(e) {
-//         console.log(e)
-//     }
-
-//     return data;
-// }
-
 async function create(name) {
 
+    let UUID = short.generate();
     let publicID = short.generate();
     let privateID = short.generate();
     // let publicID = "uuidv4()";
     // let privateID = "uuidv4()";
     try {
-        await Quiz.create({ name: name, publicID: publicID, privateID: privateID });
+        await Quiz.create({ UUID: UUID, name: name, publicID: publicID, privateID: privateID });
     }
     catch(e) {
         console.log(e)
@@ -34,18 +22,60 @@ async function create(name) {
     return {"publicID": publicID, "privateID": privateID};
 }
 
-module.exports = {
-    create
-};
+async function getByUUID(UUID) {
+    let data = [];
 
-// module.exports = (sequelize, Sequelize) => {
-//     const Test2 = sequelize.define("test2", {
-//         name: {
-//             type: Sequelize.STRING
-//         },
-//         email: {
-//             type: Sequelize.STRING
-//         }
-//     });
-//     return Test2;
-// };
+    try {
+        data = await Quiz.findAll({
+            where: {
+                UUID: UUID
+            }
+        });
+    }
+    catch(e) {
+        console.log(e)
+    }
+
+    return data[0]["dataValues"];
+}
+
+async function getByPublicID(publicID) {
+    let data = [];
+
+    try {
+        data = await Quiz.findAll({
+            where: {
+                publicID: publicID
+            }
+        });
+    }
+    catch(e) {
+        console.log(e)
+    }
+
+    return data[0]["dataValues"];
+}
+
+async function getByPrivateID(privateID) {
+    let data = [];
+
+    try {
+        data = await Quiz.findAll({
+            where: {
+                privateID: privateID
+            }
+        });
+    }
+    catch(e) {
+        console.log(e)
+    }
+
+    return data[0]["dataValues"];
+}
+
+module.exports = {
+    create,
+    getByUUID,
+    getByPublicID,
+    getByPrivateID
+};
