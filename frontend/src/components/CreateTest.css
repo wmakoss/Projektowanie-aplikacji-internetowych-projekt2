@@ -1,3 +1,11 @@
+.quiz-name-input {
+    display: block;
+    width: calc(100% - 64px);
+    margin-left: 22px;
+    margin-bottom: 11px;
+    padding: 8px;
+}
+
 .question-container {
     display: flex;
     align-items: center;

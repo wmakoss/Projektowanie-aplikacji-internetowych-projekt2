@@ -64,7 +64,7 @@ const QuestionForm = ({ addQuestion }) => {
             type="text"
             value={answer.text}
             onChange={(e) => handleAnswerChange(index, e)}
-            placeholder="Enter answer"
+            placeholder="Enter one of possible answers"
             className="answer-input"
           />
           <label>

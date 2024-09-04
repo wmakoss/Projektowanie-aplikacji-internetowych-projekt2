@@ -1,20 +1,43 @@
-.take-test-input {
-    display: block;
-    width: calc(100% - 46px);
-    margin-left: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 10px;
+.li-answer {
+    margin-left: 22px;
 }
 
-.take-test-button {
+.question-answer {
+    width: 86%;
+    padding: 6px;
+    word-wrap: break-word;
+    text-wrap: pretty;
+    margin-top: 22px;
+}
+
+.answer-checkbox {
+    max-width: 86%;
+    padding: 4px;
+    word-wrap: break-word;
+    text-wrap: pretty;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.answer-checkbox:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-answers-button {
     width: calc(100% - 22px);
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
 }
 
-.take-test-button:disabled {
+.submit-answers-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.loading {
+    margin-left: 22px;
 }

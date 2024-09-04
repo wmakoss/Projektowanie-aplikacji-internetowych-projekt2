@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import QuestionForm from './QuestionForm';
+import submitQuiz from '../services/SubmitQuiz';
 import './CreateTest.css';
 
 const CreateTest = () => {
+  const [quizName, setQuizName] = useState('');
   const [questions, setQuestions] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleAddQuestion = (question) => {
     setQuestions([...questions, question]);
@@ -16,15 +21,33 @@ const CreateTest = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // TODO: backend
-    console.log(questions);
-    setQuestions([]);
+  const handleSubmit = async () => {
+    if (quizName.trim() === '') {
+      alert('Please enter Test\'s name!');
+      return;
+    }
+
+    try {
+      const quizPublicID = await submitQuiz({ 'name': quizName }, questions);
+      alert(`The Test has been created successfully.\nTest's public ID: ${quizPublicID}`);
+      setQuizName('');
+      setQuestions([]);
+      navigate('/')
+    } catch (err) {
+      alert(`An error has occured: ${err}`);
+    }
   };
 
   return (
     <div>
-      <h2>Create a New Test</h2>
+      <h2>Create a new Test</h2><br />
+      <input
+        type="text"
+        value={quizName}
+        onChange={(e) => setQuizName(e.target.value)}
+        placeholder="Enter your Test's name"
+        className="quiz-name-input"
+      /><br />
       <QuestionForm addQuestion={handleAddQuestion} />
       <h3 id="your-questions-label">Your questions:</h3>
       {questions.length === 0 ? (
