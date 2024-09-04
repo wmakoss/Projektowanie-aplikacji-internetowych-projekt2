@@ -53,6 +53,10 @@ async function getByPublicID(publicID) {
         console.log(e)
     }
 
+    if (data == undefined || data.length < 1) {
+        return;
+    }
+
     return data[0]["dataValues"];
 }
 

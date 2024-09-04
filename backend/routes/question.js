@@ -5,6 +5,6 @@ var questionController = require('../controllers/question');
 
 router.post('/create', questionController.createQuestion);
 
-router.get('/getQuestionsBypublicID', questionController.getQuestionsBypublicID);
+router.post('/getQuestionsBypublicID', questionController.getQuestionsBypublicID);
 
 module.exports = router;

@@ -17,7 +17,7 @@ async function getQuestionsBypublicID(quizPublicID) {
 
     var quiz = await quizModel.getByPublicID(quizPublicID);
 
-    if (quiz["UUID"] == undefined) {
+    if (quiz == undefined || quiz["UUID"] == undefined) {
         return null;
     }
 
