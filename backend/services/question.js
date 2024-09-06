@@ -15,13 +15,7 @@ async function createQuestion(quizPrivateID, question, answer1, answer2, answer3
 
 async function getQuestionsByQuizPublicID(quizPublicID) {
 
-    var quiz = await quizModel.getByQuizPublicID(quizPublicID);
-
-    if (quiz == undefined || quiz["quizPublicID"] == undefined) {
-        return null;
-    }
-
-    var questionsDB = await questionModel.getByQuizPublicID(quiz["quizPublicID"]);
+    var questionsDB = await questionModel.getByQuizPublicID(quizPublicID);
 
     questions = [];
 
