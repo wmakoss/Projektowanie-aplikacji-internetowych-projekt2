@@ -36,7 +36,29 @@ async function getByQuizPublicID(quizPublicID) {
     return data;
 }
 
+async function getQuizPublicIDByQuestionPublicID(questionPublicID) {
+    let data = [];
+
+    try {
+        data = await Question.findAll({
+            where: {
+                questionPublicID: questionPublicID
+            }
+        });
+    }
+    catch(e) {
+        console.log(e)
+    }
+
+    if (data == undefined || data[0] == undefined || data[0]["dataValues"] == undefined || data[0]["dataValues"]["quizPublicID"] == undefined) {
+        return;
+    }
+
+    return data[0]["dataValues"]["quizPublicID"];
+}
+
 module.exports = {
     create,
-    getByQuizPublicID
+    getByQuizPublicID,
+    getQuizPublicIDByQuestionPublicID
 };

@@ -63,6 +63,33 @@ db.question = sequelize.define("question", {
     }
 });
 
+db.answer = sequelize.define("answer", {
+    answerPublicID: {
+        type: Sequelize.STRING
+    },
+    answerPrivateID: {
+        type: Sequelize.STRING
+    },
+    quizPublicID: {
+        type: Sequelize.STRING
+    },
+    userName: {
+        type: Sequelize.STRING
+    }
+});
+
+db.answerItem = sequelize.define("answerItem", {
+    answerPublicID: {
+        type: Sequelize.STRING
+    },
+    questionPublicID: {
+        type: Sequelize.STRING
+    },
+    answer: {
+        type: Sequelize.INTEGER
+    }
+});
+
 db.sequelize.sync({force: false})
 // false - nienadpisuje struktury bazy i danych
 .then(() => {
