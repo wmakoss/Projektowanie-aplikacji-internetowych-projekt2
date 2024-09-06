@@ -39,6 +39,34 @@ async function saveAnswer(userName, quizPublicID, answers) {
     return answerIDs;
 }
 
+async function checkScore(answerPrivateID) {
+
+    var answer = await answerModel.getByAnswerPrivateID(answerPrivateID);
+    
+    if (answer == undefined) {
+        return;
+    }
+    console.log("DEBUG: " + answer);
+    
+    var answerItems = await answerItemModel.getByAnswerPublicID(answer["answerPublicID"]);
+
+    var score = 0;
+
+    for(let answerItem of answerItems) {
+
+        var correct = await questionModel.getCorrectByQuestionPublicID(answerItem["questionPublicID"]);
+        
+        console.log("DEBUG: " + answerItem["answer"] + " " + correct);
+
+        if (answerItem["answer"] == correct) {
+            score++;
+        }
+    }
+
+    return score;
+}
+
 module.exports = {
-    saveAnswer
+    saveAnswer,
+    checkScore
 };

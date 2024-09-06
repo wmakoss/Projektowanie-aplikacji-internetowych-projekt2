@@ -39,9 +39,9 @@ async function getByAnswerPublicID(answerPublicID) {
 
     for(let row of data) {
         answerItems.push({
-            "answerPublicID": question["dataValues"]["answerPublicID"],
-            "questionPublicID": question["dataValues"]["questionPublicID"],
-            "answer": question["dataValues"]["answer"]
+            "answerPublicID": row["dataValues"]["answerPublicID"],
+            "questionPublicID": row["dataValues"]["questionPublicID"],
+            "answer": row["dataValues"]["answer"]
         });
     }
 

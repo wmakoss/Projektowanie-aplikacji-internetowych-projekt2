@@ -50,7 +50,7 @@ async function createQuestion(req, res, next) {
 
     var response = await questionService.createQuestion(req.body["quizPrivateID"], req.body["question"], req.body["answer1"], req.body["answer2"], req.body["answer3"], req.body["answer4"], req.body["correct"]);
 
-    if (response == null) {
+    if (response == undefined) {
         res.status(400).send('ERROR: Wrong quizPrivateID!');
         return;
     }
@@ -66,7 +66,7 @@ async function getQuestionsByQuizPublicID(req, res, next) {
 
     var response = await questionService.getQuestionsByQuizPublicID(req.body["quizPublicID"]);
 
-    if (response == null) {
+    if (response == undefined) {
         res.status(400).send('ERROR: Wrong quizPublicID!');
         return;
     }

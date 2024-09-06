@@ -57,8 +57,30 @@ async function getQuizPublicIDByQuestionPublicID(questionPublicID) {
     return data[0]["dataValues"]["quizPublicID"];
 }
 
+async function getCorrectByQuestionPublicID(questionPublicID) {
+    let data = [];
+
+    try {
+        data = await Question.findAll({
+            where: {
+                questionPublicID: questionPublicID
+            }
+        });
+    }
+    catch(e) {
+        console.log(e)
+    }
+
+    if (data == undefined || data[0] == undefined || data[0]["dataValues"] == undefined || data[0]["dataValues"]["correct"] == undefined) {
+        return;
+    }
+
+    return data[0]["dataValues"]["correct"];
+}
+
 module.exports = {
     create,
     getByQuizPublicID,
-    getQuizPublicIDByQuestionPublicID
+    getQuizPublicIDByQuestionPublicID,
+    getCorrectByQuestionPublicID
 };

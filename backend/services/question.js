@@ -7,7 +7,7 @@ async function createQuestion(quizPrivateID, question, answer1, answer2, answer3
     var quiz = await quizModel.getByQuizPrivateID(quizPrivateID);
 
     if (quiz["quizPublicID"] == undefined) {
-        return null;
+        return;
     }
 
     return await questionModel.create(quiz["quizPublicID"], question, answer1, answer2, answer3, answer4, correct);
