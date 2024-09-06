@@ -4,30 +4,30 @@ var questionModel = require('../models/question');
 
 async function createQuestion(quizPrivateID, question, answer1, answer2, answer3, answer4, correct) {
 
-    var quiz = await quizModel.getByPrivateID(quizPrivateID);
+    var quiz = await quizModel.getByQuizPrivateID(quizPrivateID);
 
-    if (quiz["UUID"] == undefined) {
+    if (quiz["quizPublicID"] == undefined) {
         return null;
     }
 
-    return await questionModel.create(quiz["UUID"], question, answer1, answer2, answer3, answer4, correct);
+    return await questionModel.create(quiz["quizPublicID"], question, answer1, answer2, answer3, answer4, correct);
 }
 
-async function getQuestionsBypublicID(quizPublicID) {
+async function getQuestionsByQuizPublicID(quizPublicID) {
 
-    var quiz = await quizModel.getByPublicID(quizPublicID);
+    var quiz = await quizModel.getByQuizPublicID(quizPublicID);
 
-    if (quiz == undefined || quiz["UUID"] == undefined) {
+    if (quiz == undefined || quiz["quizPublicID"] == undefined) {
         return null;
     }
 
-    var questionsDB = await questionModel.getByQuizID(quiz["UUID"]);
+    var questionsDB = await questionModel.getByQuizPublicID(quiz["quizPublicID"]);
 
     questions = [];
 
     for(let question of questionsDB) {
         questions.push({
-            "UUID": question["dataValues"]["UUID"],
+            "questionPublicID": question["dataValues"]["questionPublicID"],
             "question": question["dataValues"]["question"],
             "answer1": question["dataValues"]["answer1"],
             "answer2": question["dataValues"]["answer2"],
@@ -41,5 +41,5 @@ async function getQuestionsBypublicID(quizPublicID) {
 
 module.exports = {
     createQuestion,
-    getQuestionsBypublicID
+    getQuestionsByQuizPublicID
 };

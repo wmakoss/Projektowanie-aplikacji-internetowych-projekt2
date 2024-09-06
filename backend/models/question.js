@@ -6,25 +6,26 @@ var db = config.db;
 
 var Question = db.question;
 
-async function create(quizID, question, answer1, answer2, answer3, answer4, correct) {
+async function create(quizPublicID, question, answer1, answer2, answer3, answer4, correct) {
 
-    let UUID = short.generate();
+    let questionPublicID = short.generate();
+    let questionPrivateID = short.generate();
     try {
-        await Question.create({ UUID: UUID, quizID: quizID, question: question, answer1: answer1, answer2: answer2, answer3: answer3, answer4: answer4, correct: correct });
+        await Question.create({ questionPublicID: questionPublicID, questionPrivateID: questionPrivateID, quizPublicID: quizPublicID, question: question, answer1: answer1, answer2: answer2, answer3: answer3, answer4: answer4, correct: correct });
     }
     catch(e) {
         console.log(e)
     }
-    return {"questionID": UUID};
+    return {"questionPublicID": questionPublicID, "questionPrivateID": questionPrivateID};
 }
 
-async function getByQuizID(quizID) {
+async function getByQuizPublicID(quizPublicID) {
     let data = [];
 
     try {
         data = await Question.findAll({
             where: {
-                quizID: quizID
+                quizPublicID: quizPublicID
             }
         });
     }
@@ -37,5 +38,5 @@ async function getByQuizID(quizID) {
 
 module.exports = {
     create,
-    getByQuizID
+    getByQuizPublicID
 };

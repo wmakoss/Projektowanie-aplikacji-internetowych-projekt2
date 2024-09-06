@@ -1,11 +1,11 @@
-const getQuiz = async (publicId) => {
+const getQuiz = async (quizPublicID) => {
     try {
-        const response = await fetch(`http://localhost:${process.env.REACT_APP_BACKEND_PORT}/question/getQuestionsBypublicID`, {
+        const response = await fetch(`http://localhost:8080/question/getQuestionsByquizPublicID`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(publicId)
+            body: JSON.stringify(quizPublicID)
         });
 
         if (!response.ok) {

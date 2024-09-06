@@ -8,44 +8,24 @@ var Quiz = db.quiz;
 
 async function create(name) {
 
-    let UUID = short.generate();
-    let publicID = short.generate();
-    let privateID = short.generate();
-    // let publicID = "uuidv4()";
-    // let privateID = "uuidv4()";
+    let quizPublicID = short.generate();
+    let quizPrivateID = short.generate();
     try {
-        await Quiz.create({ UUID: UUID, name: name, publicID: publicID, privateID: privateID });
+        await Quiz.create({ quizPublicID: quizPublicID, quizPrivateID: quizPrivateID, name: name, });
     }
     catch(e) {
         console.log(e)
     }
-    return {"publicID": publicID, "privateID": privateID};
+    return {"quizPublicID": quizPublicID, "quizPrivateID": quizPrivateID};
 }
 
-async function getByUUID(UUID) {
+async function getByQuizPublicID(quizPublicID) {
     let data = [];
 
     try {
         data = await Quiz.findAll({
             where: {
-                UUID: UUID
-            }
-        });
-    }
-    catch(e) {
-        console.log(e)
-    }
-
-    return data[0]["dataValues"];
-}
-
-async function getByPublicID(publicID) {
-    let data = [];
-
-    try {
-        data = await Quiz.findAll({
-            where: {
-                publicID: publicID
+                quizPublicID: quizPublicID
             }
         });
     }
@@ -60,13 +40,13 @@ async function getByPublicID(publicID) {
     return data[0]["dataValues"];
 }
 
-async function getByPrivateID(privateID) {
+async function getByQuizPrivateID(quizPrivateID) {
     let data = [];
 
     try {
         data = await Quiz.findAll({
             where: {
-                privateID: privateID
+                quizPrivateID: quizPrivateID
             }
         });
     }
@@ -79,7 +59,6 @@ async function getByPrivateID(privateID) {
 
 module.exports = {
     create,
-    getByUUID,
-    getByPublicID,
-    getByPrivateID
+    getByQuizPublicID,
+    getByQuizPrivateID
 };

@@ -48,23 +48,23 @@ async function createQuestion(req, res, next) {
         return;
     }
 
-    var questionID = await questionService.createQuestion(req.body["quizPrivateID"], req.body["question"], req.body["answer1"], req.body["answer2"], req.body["answer3"], req.body["answer4"], req.body["correct"]);
+    var response = await questionService.createQuestion(req.body["quizPrivateID"], req.body["question"], req.body["answer1"], req.body["answer2"], req.body["answer3"], req.body["answer4"], req.body["correct"]);
 
-    if (questionID == null) {
+    if (response == null) {
         res.status(400).send('ERROR: Wrong quizPrivateID!');
         return;
     }
 
-    res.json(questionID);
+    res.json(response);
 }
 
-async function getQuestionsBypublicID(req, res, next) {
+async function getQuestionsByQuizPublicID(req, res, next) {
 
     if (req.body["quizPublicID"] == undefined || req.body["quizPublicID"].length <= 0) {
         res.status(400).send('ERROR: Body json require with quizPublicID longer than 0 character!');
     }
 
-    var response = await questionService.getQuestionsBypublicID(req.body["quizPublicID"]);
+    var response = await questionService.getQuestionsByQuizPublicID(req.body["quizPublicID"]);
 
     if (response == null) {
         res.status(400).send('ERROR: Wrong quizPublicID!');
@@ -76,5 +76,5 @@ async function getQuestionsBypublicID(req, res, next) {
 
 module.exports = {
     createQuestion,
-    getQuestionsBypublicID
+    getQuestionsByQuizPublicID
 };

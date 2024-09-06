@@ -1,6 +1,6 @@
 const submitQuestion = async (question) => {
     try {
-        const response = await fetch(`http://localhost:${process.env.REACT_APP_BACKEND_PORT}/question/create`, {
+        const response = await fetch(`http://localhost:8080/question/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ const submitQuestion = async (question) => {
 
 const submitQuiz = async (options, questions) => {
     try {
-        const response = await fetch(`http://localhost:${process.env.REACT_APP_BACKEND_PORT}/quiz/create`, {
+        const response = await fetch(`http://localhost:8080/quiz/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,8 +34,8 @@ const submitQuiz = async (options, questions) => {
             throw new Error('Failed to create quiz');
         } else {
             const quizIDs = await response.json();
-            const quizPrivateID = quizIDs.privateID;
-            const quizPublicID = quizIDs.publicID;
+            const quizPrivateID = quizIDs.quizPrivateID;
+            const quizPublicID = quizIDs.quizPublicID;
 
             questions.forEach(async question => {
                 const correctIndex = question.answers.findIndex(a => a.correct) + 1;

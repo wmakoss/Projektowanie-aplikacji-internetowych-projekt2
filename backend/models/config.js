@@ -21,35 +21,26 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.test2 = sequelize.define("test2", {
-    name: {
-        type: Sequelize.STRING
-    },
-    email: {
-        type: Sequelize.STRING
-    }
-});
-
 db.quiz = sequelize.define("quiz", {
-    UUID: {
+    quizPublicID: {
+        type: Sequelize.STRING
+    },
+    quizPrivateID: {
         type: Sequelize.STRING
     },
     name: {
-        type: Sequelize.STRING
-    },
-    publicID: {
-        type: Sequelize.STRING
-    },
-    privateID: {
         type: Sequelize.STRING
     }
 });
 
 db.question = sequelize.define("question", {
-    UUID: {
+    questionPublicID: {
         type: Sequelize.STRING
     },
-    quizID: {
+    questionPrivateID: {
+        type: Sequelize.STRING
+    },
+    quizPublicID: {
         type: Sequelize.STRING
     },
     question: {
