@@ -46,7 +46,6 @@ async function checkScore(answerPrivateID) {
     if (answer == undefined) {
         return;
     }
-    console.log("DEBUG: " + answer);
     
     var answerItems = await answerItemModel.getByAnswerPublicID(answer["answerPublicID"]);
 
@@ -55,8 +54,6 @@ async function checkScore(answerPrivateID) {
     for(let answerItem of answerItems) {
 
         var correct = await questionModel.getCorrectByQuestionPublicID(answerItem["questionPublicID"]);
-        
-        console.log("DEBUG: " + answerItem["answer"] + " " + correct);
 
         if (answerItem["answer"] == correct) {
             score++;
@@ -66,7 +63,51 @@ async function checkScore(answerPrivateID) {
     return score;
 }
 
+async function reviewAnswer(answerPrivateID) {
+
+    var answer = await answerModel.getByAnswerPrivateID(answerPrivateID);
+    
+    if (answer == undefined) {
+        return;
+    }
+    
+    var answerItems = await answerItemModel.getByAnswerPublicID(answer["answerPublicID"]);
+
+    var score = 0;
+
+    var answers = [];
+
+    for(let answerItem of answerItems) {
+
+        var question = await questionModel.getByQuestionPublicID(answerItem["questionPublicID"]);
+        var questionScore = 0;
+        if (answerItem["answer"] == question["correct"]) {
+            score++;
+            questionScore = 1;
+        }
+
+        answers.push({
+            "question": question["question"],
+            "answer1": question["answer1"],
+            "answer2": question["answer2"],
+            "answer3": question["answer3"],
+            "answer4": question["answer4"],
+            "userAnswer": answerItem["answer"],
+            "correct": question["correct"],
+            "score": questionScore
+        });
+    }
+
+    return {
+        "quizPublicID": answer["quizPublicID"],
+        "userName": answer["userName"],
+        "score": score,
+        "answers": answers
+    };
+}
+
 module.exports = {
     saveAnswer,
-    checkScore
+    checkScore,
+    reviewAnswer
 };
