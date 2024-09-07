@@ -11,7 +11,7 @@ async function getNameByQuizPublicID(quizPublicID) {
     if (quiz == undefined || quiz["name"] == undefined) {
         return;
     }
-    return await quiz["name"];
+    return quiz["name"];
 }
 
 async function getQuizPublicIDByquizPrivateID(quizPrivateID) {
@@ -19,7 +19,7 @@ async function getQuizPublicIDByquizPrivateID(quizPrivateID) {
     if (quiz == undefined || quiz["quizPublicID"] == undefined) {
         return;
     }
-    return await quiz["quizPublicID"];
+    return quiz["quizPublicID"];
 }
 
 async function getNumberOfQuestionsByquizPublicID(quizPublicID) {
