@@ -106,8 +106,44 @@ async function reviewAnswer(answerPrivateID) {
     };
 }
 
+async function getAnswersByQuizPrivateID(quizPrivateID) {
+
+    var quizPublicID = await quizService.getQuizPublicIDByquizPrivateID(quizPrivateID);
+
+    if (quizPublicID == undefined) {
+        return;
+    }
+
+    var answers = await answerModel.getByQuizPublicID(quizPublicID);
+
+    var response = [];
+
+    var score;
+    var quizName;
+    var numberOfQuestions;
+
+    for(let answer of answers) {
+        quizName = await quizService.getNameByQuizPublicID(answer["quizPublicID"]);
+        score = await checkScore(answer["answerPrivateID"]);
+        numberOfQuestions = await quizService.getNumberOfQuestionsByquizPublicID(answer["quizPublicID"]);
+        response.push({
+            "quizName": quizName,
+            "score": score,
+            "numberOfQuestions": numberOfQuestions,
+            "answerPrivateID": answer["answerPrivateID"],
+            "quizPublicID": answer["quizPublicID"],
+            "userName": answer["userName"]
+        });
+    }
+
+    return response;
+
+
+}
+
 module.exports = {
     saveAnswer,
     checkScore,
-    reviewAnswer
+    reviewAnswer,
+    getAnswersByQuizPrivateID
 };
