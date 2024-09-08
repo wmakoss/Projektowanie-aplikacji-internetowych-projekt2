@@ -28,8 +28,8 @@ const CreateTest = () => {
     }
 
     try {
-      const quizPublicID = await submitQuiz({ 'name': quizName }, questions);
-      alert(`The Test has been created successfully.\nTest's public ID: ${quizPublicID}`);
+      const quizIDs = await submitQuiz({ 'name': quizName }, questions);
+      alert(`The Test has been created successfully.\nTest's public ID: ${quizIDs.quizPublicID}\nTest's private ID: ${quizIDs.quizPrivateID}`);
       setQuizName('');
       setQuestions([]);
       navigate('/')

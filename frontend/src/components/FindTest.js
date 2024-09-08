@@ -5,7 +5,7 @@ import './FindTest.css';
 
 const FindTest = () => {
   const [testId, setTestId] = useState('');
-  
+
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -15,7 +15,7 @@ const FindTest = () => {
     }
 
     try {
-      await Quiz.getQuizData({ 'quizPublicID': testId });
+      await Quiz.getQuizName({ 'quizPublicID': testId });
       navigate(`/test/${testId}`)
     } catch (err) {
       alert('A Test with provided public ID has not been found!');

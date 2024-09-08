@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
-//import Quiz from '../services/GetQuiz';
+import { useNavigate } from 'react-router-dom';
+import getTestResponses from '../services/GetResponses';
 import './FindTestResponses.css';
 
 const FindTestResponses = () => {
   const [testId, setTestId] = useState('');
-  
-  //const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     if (testId.trim() === '') {
@@ -14,13 +14,13 @@ const FindTestResponses = () => {
       return;
     }
 
-    /*try {
-      await Quiz.getQuizData({ 'quizPublicID': testId });
+    try {
+      await getTestResponses({ 'quizPrivateID': testId });
       navigate(`/checkTestResponses/${testId}`)
     } catch (err) {
-      alert('Answers with provided public ID have not been found!');
+      alert('Answers with provided private ID have not been found!');
       setTestId('');
-    }*/
+    }
   };
 
   return (

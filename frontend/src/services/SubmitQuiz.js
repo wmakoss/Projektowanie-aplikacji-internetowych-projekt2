@@ -35,7 +35,6 @@ const submitQuiz = async (options, questions) => {
         } else {
             const quizIDs = await response.json();
             const quizPrivateID = quizIDs.quizPrivateID;
-            const quizPublicID = quizIDs.quizPublicID;
 
             questions.forEach(async question => {
                 const correctIndex = question.answers.findIndex(a => a.correct) + 1;
@@ -52,8 +51,8 @@ const submitQuiz = async (options, questions) => {
                     throw new Error('Failed to create quiz');
                 }
             });
-            
-            return quizPublicID;
+
+            return quizIDs;
         }
     } catch (err) {
         throw new Error('Failed to create quiz');

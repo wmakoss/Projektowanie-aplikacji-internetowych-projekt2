@@ -1,0 +1,19 @@
+.li-test-answer {
+    margin-left: 22px;
+}
+
+.question-test-answer {
+    width: 86%;
+    padding: 6px;
+    word-wrap: break-word;
+    text-wrap: pretty;
+    margin-top: 22px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}

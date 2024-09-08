@@ -61,12 +61,12 @@ const TakeTest = () => {
         'quizPublicID': params.id,
         'answers': answers
       });
-      alert(`Your answers has been sent successfully.\nAnswers' public ID: ${answerIDs.answerPublicID}`);
+      alert(`Your answers has been sent successfully.\nAnswers' public ID: ${answerIDs.answerPublicID}\nAnswers' private ID: ${answerIDs.answerPrivateID}`);
       setUserName('');
       setQuizName('');
       setQuizData(null);
       setSelectedAnswers({});
-      navigate(`/checkAnswers`)//${answerIDs.answerPublicID}`)
+      navigate(`/checkAnswers`)///${answerIDs.answerPrivateID}`)
     } catch (err) {
       alert(`An error has occured: ${err}`);
     }
