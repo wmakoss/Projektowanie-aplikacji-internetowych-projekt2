@@ -10,6 +10,8 @@ const Home = () => {
       <br /><h2>Welcome to QuizApp!</h2><br />
       <button className="home-button" onClick={() => navigate('/create')}>Create a new Test</button>
       <button className="home-button" onClick={() => navigate('/test')}>Take a Test</button>
+      <button className="home-button" onClick={() => navigate('/checkTestResponses')}>Check all Test's responses</button>
+      <button className="home-button" onClick={() => navigate('/checkAnswers')}>Check your answers</button>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import getQuiz from '../services/GetQuiz';
+import Quiz from '../services/GetQuiz';
 import './FindTest.css';
 
 const FindTest = () => {
@@ -15,7 +15,7 @@ const FindTest = () => {
     }
 
     try {
-      await getQuiz({ 'quizPublicID': testId });
+      await Quiz.getQuizData({ 'quizPublicID': testId });
       navigate(`/test/${testId}`)
     } catch (err) {
       alert('A Test with provided public ID has not been found!');
@@ -31,7 +31,7 @@ const FindTest = () => {
         type="text"
         value={testId}
         onChange={(e) => setTestId(e.target.value)}
-        placeholder="Enter Test ID"
+        placeholder="Enter Test's public ID"
       /><br />
       <button className="take-test-button" onClick={handleSubmit}>Start Test</button>
     </div>

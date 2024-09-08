@@ -1,3 +1,10 @@
+.user-name-input {
+    display: block;
+    width: calc(100% - 64px);
+    margin-left: 22px;
+    padding: 8px;
+}
+
 .li-answer {
     margin-left: 22px;
 }
