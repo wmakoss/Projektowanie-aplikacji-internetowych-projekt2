@@ -1,0 +1,25 @@
+version: '1.0'
+
+services:
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - "127.0.0.1:8080:8080"
+        networks:
+            - common-net
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        depends_on:
+            - backend
+        ports:
+            - "127.0.0.1:80:80"
+        networks:
+            - common-net
+
+networks:
+  common-net:
+    driver: bridge
