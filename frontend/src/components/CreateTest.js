@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QuestionForm from './QuestionForm';
 import submitQuiz from '../services/SubmitQuiz';
-import './CreateTest.css';
+import '../assets/CreateTest.css';
 
 const CreateTest = () => {
   const [quizName, setQuizName] = useState('');
@@ -29,10 +29,9 @@ const CreateTest = () => {
 
     try {
       const quizIDs = await submitQuiz({ 'name': quizName }, questions);
-      alert(`The Test has been created successfully.\nTest's public ID: ${quizIDs.quizPublicID}\nTest's private ID: ${quizIDs.quizPrivateID}`);
       setQuizName('');
       setQuestions([]);
-      navigate('/')
+      navigate('/createdTest', { state: { quizPublicID: quizIDs.quizPublicID, quizPrivateID: quizIDs.quizPrivateID } })
     } catch (err) {
       alert(`An error has occured: ${err}`);
     }

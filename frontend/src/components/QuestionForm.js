@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './QuestionForm.css';
+import '../assets/QuestionForm.css';
 
 const QuestionForm = ({ addQuestion }) => {
   const [question, setQuestion] = useState('');

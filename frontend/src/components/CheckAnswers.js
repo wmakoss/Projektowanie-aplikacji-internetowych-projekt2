@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Answers from '../services/GetAnswers';
 import Quiz from '../services/GetQuiz';
-import './CheckAnswers.css';
+import '../assets/CheckAnswers.css';
 
 const CheckAnswers = () => {
     const params = useParams();

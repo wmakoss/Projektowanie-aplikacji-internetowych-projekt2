@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getTestResponses from '../services/GetResponses';
-import './FindTestResponses.css';
+import '../assets/FindTestResponses.css';
 
 const FindTestResponses = () => {
   const [testId, setTestId] = useState('');

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import getTestResponses from '../services/GetResponses';
 import Quiz from '../services/GetQuiz';
-import './CheckTestResponses.css';
+import '../assets/CheckTestResponses.css';
 
 const CheckTestResponses = () => {
     const params = useParams();
-    const [quizName, setQuizName] = useState('');
+    const [quizName, setQuizName] = useState("Check all Test's responses");
     const [score, setScore] = useState(0);
     const [responsesData, setResponsesData] = useState({});
 
@@ -22,7 +22,7 @@ const CheckTestResponses = () => {
                     });
                     setScore((parseInt(sum) / (parseInt(data[0].numberOfQuestions) * data.length) * 100).toFixed(2));
                     const name = await Quiz.getQuizName({ 'quizPublicID': data[0].quizPublicID });
-                    setQuizName(name.quizName);
+                    setQuizName(`Test: ${name.quizName}`);
                 } else {
                     setResponsesData({ 'test': 'test' });
                 }
@@ -36,9 +36,9 @@ const CheckTestResponses = () => {
 
     return (
         <div>
+            <h2>{quizName}</h2><br />
             {responsesData ? (
                 <div>
-                    <h2>{quizName}</h2><br />
                     {responsesData.length > 0 && !responsesData.test ? (
                         <><h3>Average score: <i>{score}%</i></h3><br /><div>
                             <ol type="1">

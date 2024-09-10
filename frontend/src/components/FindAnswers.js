@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Answers from '../services/GetAnswers';
-import './FindAnswers.css';
+import '../assets/FindAnswers.css';
 
 const FindAnswers = () => {
   const [answerId, setAnswerId] = useState('');
@@ -10,7 +10,7 @@ const FindAnswers = () => {
 
   const handleSubmit = async () => {
     if (answerId.trim() === '') {
-      alert('Please enter your answers\' private ID!');
+      alert('Please enter your answers\' ID!');
       return;
     }
 
@@ -18,7 +18,7 @@ const FindAnswers = () => {
       await Answers.getScore({ 'answerPrivateID': answerId });
       navigate(`/checkAnswers/${answerId}`)
     } catch (err) {
-      alert('Answers with provided private ID have not been found!');
+      alert('Answers with provided ID have not been found!');
       setAnswerId('');
     }
   };
@@ -31,7 +31,7 @@ const FindAnswers = () => {
         type="text"
         value={answerId}
         onChange={(e) => setAnswerId(e.target.value)}
-        placeholder="Enter answers' private ID"
+        placeholder="Enter answers' ID"
       /><br />
       <button className="check-answers-button" onClick={handleSubmit}>Check answers</button>
     </div>

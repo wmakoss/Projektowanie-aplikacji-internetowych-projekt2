@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Quiz from '../services/GetQuiz'
 import submitAnswers from '../services/SubmitAnswers';
-import './TakeTest.css';
+import '../assets/TakeTest.css';
 
 const TakeTest = () => {
   const params = useParams();
@@ -61,12 +61,11 @@ const TakeTest = () => {
         'quizPublicID': params.id,
         'answers': answers
       });
-      alert(`Your answers has been sent successfully.\nAnswers' public ID: ${answerIDs.answerPublicID}\nAnswers' private ID: ${answerIDs.answerPrivateID}`);
       setUserName('');
       setQuizName('');
       setQuizData(null);
       setSelectedAnswers({});
-      navigate(`/checkAnswers`)///${answerIDs.answerPrivateID}`)
+      navigate(`/testTaken`, { state: { answerPrivateID: answerIDs.answerPrivateID } })
     } catch (err) {
       alert(`An error has occured: ${err}`);
     }
