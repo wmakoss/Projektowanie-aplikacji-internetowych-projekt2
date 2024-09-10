@@ -3,8 +3,8 @@
 Projekt: Aplikacja do tworzenia testów (_**QuizApp**_)
 
 Autorzy:
-- 
-- 
+- Wojciech Makosiej
+- Jakub Pleśniak
 - Cezary Zięba
 
 ## Identyfikacja zagadnienia biznesowego (problemu)
@@ -34,7 +34,7 @@ Aplikacja posiada również intuicyjny interfejs webowy, który zapewnia użytko
 
 ## Analiza zagadnienia i jego modelowanie
 
-Aplikacja korzysta z modelu architektury klient-serwer, gdzie frontend (React.js) komunikuje się z backendem (Node.js) za pomocą REST API. Baza danych SQLite3 przechowuje informacje o testach, pytaniach oraz wynikach użytkowników.
+Aplikacja korzysta z modelu architektury klient-serwer, gdzie frontend (React.js) komunikuje się z backendem (Node.js) za pomocą REST API. Backend komunikuje się z bazą danych SQLite3 za pomocą narzędzia ORM (Sequelize). Baza danych przechowuje informacje o testach, pytaniach oraz wynikach użytkowników.
 
 Struktura wykorzystanych modeli:
 - Quiz: nazwa, publiczneID, prywatneID
