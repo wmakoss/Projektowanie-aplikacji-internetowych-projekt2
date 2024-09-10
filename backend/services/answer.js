@@ -122,6 +122,10 @@ async function getAnswersByQuizPrivateID(quizPrivateID) {
     var quizName;
     var numberOfQuestions;
 
+    if (answers == undefined || answers.length == 0) {
+        return response;
+    }
+
     for(let answer of answers) {
         quizName = await quizService.getNameByQuizPublicID(answer["quizPublicID"]);
         score = await checkScore(answer["answerPrivateID"]);
