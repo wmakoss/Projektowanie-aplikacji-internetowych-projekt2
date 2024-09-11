@@ -28,11 +28,6 @@
     margin-right: 10px;
 }
 
-.correct-checkbox:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 .remove-answer-button {
     margin-left: 12px;
     margin-right: 10px;

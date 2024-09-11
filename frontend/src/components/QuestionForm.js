@@ -69,10 +69,9 @@ const QuestionForm = ({ addQuestion }) => {
           />
           <label>
             <input
-              type="checkbox"
+              type="radio"
               checked={answer.correct}
               onChange={(e) => handleCorrectChange(index, e)}
-              disabled={answers.filter(a => a.correct).length === 1 && !answer.correct}
               className="correct-checkbox"
             />
             Correct

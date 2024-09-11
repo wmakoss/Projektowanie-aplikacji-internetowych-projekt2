@@ -35,10 +35,6 @@ const TakeTest = () => {
     }));
   };
 
-  const isCheckboxDisabled = (questionIndex, answerIndex) => {
-    return selectedAnswers[questionIndex] !== undefined && selectedAnswers[questionIndex] !== answerIndex;
-  };
-
   const handleSubmit = async () => {
     if (userName.trim() === '') {
       alert('Please enter your name!');
@@ -89,9 +85,8 @@ const TakeTest = () => {
                 <div className="question-answer">{q.question}</div>
                 <label>
                   <input
-                    type="checkbox"
+                    type="radio"
                     className="answer-checkbox"
-                    disabled={isCheckboxDisabled(questionIndex, 1)}
                     checked={selectedAnswers[questionIndex] === 1}
                     onChange={() => handleCheckboxChange(questionIndex, 1)}
                   />
@@ -100,9 +95,8 @@ const TakeTest = () => {
                 <br />
                 <label>
                   <input
-                    type="checkbox"
+                    type="radio"
                     className="answer-checkbox"
-                    disabled={isCheckboxDisabled(questionIndex, 2)}
                     checked={selectedAnswers[questionIndex] === 2}
                     onChange={() => handleCheckboxChange(questionIndex, 2)}
                   />
@@ -113,9 +107,8 @@ const TakeTest = () => {
                     <br />
                     <label>
                       <input
-                        type="checkbox"
+                        type="radio"
                         className="answer-checkbox"
-                        disabled={isCheckboxDisabled(questionIndex, 3)}
                         checked={selectedAnswers[questionIndex] === 3}
                         onChange={() => handleCheckboxChange(questionIndex, 3)}
                       />
@@ -128,9 +121,8 @@ const TakeTest = () => {
                     <br />
                     <label>
                       <input
-                        type="checkbox"
+                        type="radio"
                         className="answer-checkbox"
-                        disabled={isCheckboxDisabled(questionIndex, 4)}
                         checked={selectedAnswers[questionIndex] === 4}
                         onChange={() => handleCheckboxChange(questionIndex, 4)}
                       />

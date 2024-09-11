@@ -28,11 +28,6 @@
     margin-top: 10px;
 }
 
-.answer-checkbox:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 .submit-answers-button {
     width: calc(100% - 22px);
     margin-left: 10px;
