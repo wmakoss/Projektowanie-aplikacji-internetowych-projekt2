@@ -37,22 +37,17 @@ Aplikacja posiada również intuicyjny interfejs webowy, który zapewnia użytko
 Aplikacja korzysta z modelu architektury klient-serwer, gdzie frontend (React.js) komunikuje się z backendem (Node.js) za pomocą REST API. Backend komunikuje się z bazą danych SQLite3 za pomocą narzędzia ORM (Sequelize). Baza danych przechowuje informacje o testach, pytaniach oraz wynikach użytkowników.
 
 Struktura wykorzystanych modeli:
-- Quiz: nazwa, publiczneID, prywatneID
-- Pytanie: treść, publiczneID, prywatneID, publiczneIDQuizu, nrPoprawnejOdpowiedzi, [odpowiedzi]
-- Odpowiedź: nazwaUżytkownika, publiczneID, prywatneID, publiczneIDQuizu
-- ElementOdpowiedzi: publiczneIDOdpowiedzi, publiczneIDPytania, wartośćKonkretnejOdpowiedziUżytkownika
+- Quiz: _nazwa, publiczneID, prywatneID_
+- Pytanie: _treść, publiczneID, prywatneID, publiczneIDQuizu, nrPoprawnejOdpowiedzi, [odpowiedzi]_
+- Odpowiedź: _nazwaUżytkownika, publiczneID, prywatneID, publiczneIDQuizu_
+- ElementOdpowiedzi: _publiczneIDOdpowiedzi, publiczneIDPytania, wartośćKonkretnejOdpowiedziUżytkownika_
 
 
 ## Implementacja
 
-1. Tworzenie testów
+_Backend_: ...
 
-2. Rozwiązywanie testów
-
-3. Sprawdzanie wyników - pojedynczo - użytkownik rozwiązujący test
-
-4. Sprawdzenie wyników - zbiorowo - autor testu
-
+_Frontend_: Zbudowany został w oparciu o framework React.js. Aplikacja korzysta z komponentowej architektury, co pozwala na łatwe utrzymanie oraz rozbudowę projektu. Pliki projektu rozdzielono na katalogi w zależności od funkcji: assets - zasoby statyczne (style), components - komponenty React (logika i UI), services - komponenty odpowiedzialne za komunikację z API backendu. Główne komponenty aplikacji (_index.js_ i _App.js_) znajdują się poza katalogami podrzędnymi (powyższymi). Każda funkcjonalność aplikacji zaimplementowana została jako osobny komponent (czasem zależny od innych komponentów). Komunikacja z backendem odbywa się za pomocą asynchronicznych zapytań HTTP, realizowanych za pomocą wbudowanej funkcji _fetch_. Wszystkie zapytania są realizowane poprzez warstwę (omawianych wcześniej) komponentów-serwisów. Dodatkowo, do zarządzania stanem i zaczepiania akcji w komponentach wykorzystano React Hooks, co pozwala na proste i czytelne zarządzanie logiką aplikacji. W projekcie korzystamy z dwóch głównych hooków: _useState_ – do zarządzania lokalnym stanem komponentów oraz _useEffect_ – do wykonywania dodatkowych akcji, takich jak wywoływanie funkcji komponentów-serwisów odpowiedzialnych za pobieranie danych z API.
 
 ## Podsumowanie
 
