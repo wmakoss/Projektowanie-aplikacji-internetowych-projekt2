@@ -16,6 +16,7 @@ async function createTest() {
     );
 
     if (response.status != 200) {
+        console.log("Endpoint /quiz/create response status is not 200!");
         return false;
     }
 
@@ -39,6 +40,7 @@ async function createTestAncCheckName() {
     );
 
     if (response.status != 200) {
+        console.log("Endpoint /quiz/create response status is not 200!");
         return false;
     }
 
@@ -57,6 +59,7 @@ async function createTestAncCheckName() {
     );
 
     if (response.status != 200) {
+        console.log("Endpoint /quiz/getNameByQuizPublicID response status is not 200!");
         return false;
     }
 
