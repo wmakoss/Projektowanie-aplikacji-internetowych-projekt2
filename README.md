@@ -49,6 +49,17 @@ _Backend_: Został zbudowany z wykorzystaniem framework'u Express.js i jest opar
 
 _Frontend_: Zbudowany został w oparciu o framework React.js. Aplikacja korzysta z komponentowej architektury, co pozwala na łatwe utrzymanie oraz rozbudowę projektu. Pliki projektu rozdzielono na katalogi w zależności od funkcji: assets - zasoby statyczne (style), components - komponenty React (logika i UI), services - komponenty odpowiedzialne za komunikację z API backendu. Główne komponenty aplikacji (_index.js_ i _App.js_) znajdują się poza katalogami podrzędnymi (powyższymi). Każda funkcjonalność aplikacji zaimplementowana została jako osobny komponent (czasem zależny od innych komponentów). Komunikacja z backendem odbywa się za pomocą asynchronicznych zapytań HTTP, realizowanych za pomocą wbudowanej funkcji _fetch_. Wszystkie zapytania są realizowane poprzez warstwę (omawianych wcześniej) komponentów-serwisów. Dodatkowo, do zarządzania stanem i zaczepiania akcji w komponentach wykorzystano React Hooks, co pozwala na proste i czytelne zarządzanie logiką aplikacji. W projekcie korzystamy z dwóch głównych hooków: _useState_ – do zarządzania lokalnym stanem komponentów oraz _useEffect_ – do wykonywania dodatkowych akcji, takich jak wywoływanie funkcji komponentów-serwisów odpowiedzialnych za pobieranie danych z API.
 
+## Uruchamianie i testowanie aplikacji
+
+Aplikacje możemy uruchomić za pomocą dockera używając poniższej komendy:
+```
+docker-compose up backend frontend
+```
+Gdy aplikacja jest uruchomiona możemy uruchomić testy używając poniższej komendy:
+```
+npm run test --prefix ./backend/
+```
+
 ## Podsumowanie
 
 Zamierzony cel projektu (opisany na początku dokumentu) został osiągnięty bez większych trudności. 
